@@ -1,0 +1,10 @@
+version: '0.2'
+__metadata__:
+  license_url: https://gsrs.ncats.nih.gov/#!/faqs#%2Frelease
+  url: https://gsrs.ncats.nih.gov/
+dumper:
+  data_url: https://gsrs.ncats.nih.gov/downloads/dump-public-2023-12-14.gsrs
+  uncompress: false
+uploader:
+  parser: parser:load_substances
+  on_duplicates: ignore
