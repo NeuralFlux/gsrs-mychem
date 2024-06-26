@@ -8,3 +8,4 @@ dumper:
 uploader:
   parser: parser:load_substances
   on_duplicates: ignore
+  mapping: mapping:get_custom_mapping
