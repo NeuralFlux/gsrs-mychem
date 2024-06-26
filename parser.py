@@ -15,10 +15,11 @@ def load_substances(data_folder: str):
     file_name = os.path.join(data_folder, "dump-public-2023-12-14.gsrs")
 
     with gzip.GzipFile(file_name) as fd:
-        for raw_line in itertools.islice(fd, 10000):
+        for raw_line in itertools.islice(fd, 1):
             record = json.loads(raw_line.decode("utf-8").strip())
             record = dict_convert(record, keyfn=process_key)
             record = dict_sweep(record, vals=["", None], remove_invalid_list=True)
-            record["_id"] = record["uuid"]
+            _id = record.pop("uuid")
+            logging.debug(f"ID type: {type(_id)}")
 
-            yield record
+            yield {"_id": _id, "gsrs": record}
