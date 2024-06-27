@@ -585,7 +585,7 @@ def get_custom_mapping(cls):
                     "properties": {
                         "id": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
                         "digest": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
-                        "smiles": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
+                        "smiles": {"type": "keyword"},
                         "formula": {
                             "normalizer": "keyword_lowercase_normalizer",
                             "type": "keyword",
@@ -616,7 +616,7 @@ def get_custom_mapping(cls):
                         "uuid": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
                         "id": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
                         "digest": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
-                        "smiles": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
+                        "smiles": {"type": "keyword"},
                         "formula": {
                             "normalizer": "keyword_lowercase_normalizer",
                             "type": "keyword",
@@ -799,7 +799,6 @@ def get_custom_mapping(cls):
                                 },
                                 "molfile": {"type": "text"},
                                 "smiles": {
-                                    "normalizer": "keyword_lowercase_normalizer",
                                     "type": "keyword",
                                 },
                                 "formula": {
@@ -839,7 +838,6 @@ def get_custom_mapping(cls):
                                 },
                                 "molfile": {"type": "text"},
                                 "smiles": {
-                                    "normalizer": "keyword_lowercase_normalizer",
                                     "type": "keyword",
                                 },
                                 "formula": {
