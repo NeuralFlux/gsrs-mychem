@@ -113,7 +113,7 @@ def get_custom_mapping(cls):
                                     "type": "keyword",
                                 },
                                 "nameOrg": {"type": "text"},
-                                "deprecatedDate": {"type": "date"},
+                                "deprecatedDate": {"type": "date", "format": "yyyy-MM-dd"},
                             }
                         },
                         "nameJurisdiction": {
@@ -385,7 +385,7 @@ def get_custom_mapping(cls):
                         "uuid": {"normalizer": "keyword_lowercase_normalizer", "type": "keyword"},
                         "publicDomain": {"type": "boolean"},
                         "tags": {"type": "text"},
-                        "documentDate": {"type": "date"},
+                        "documentDate": {"type": "date", "format": "yyyy-MM-dd"},
                         "uploadedFile": {
                             "normalizer": "keyword_lowercase_normalizer",
                             "type": "keyword",
