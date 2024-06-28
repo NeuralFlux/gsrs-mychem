@@ -15,9 +15,14 @@ date_cols = ("documentDate", "deprecatedDate")
 
 
 def timestamp_to_date(k: str, v: Any):
-    """check if a key-value pair needs date formatting and do so"""
+    """
+    check if a key-value pair needs date formatting and do so.
+    NOTE: val is expected to be a UNIX millisecond timestamp for
+    date-bearing keys
+    """
+
     if k in date_cols:
-        date_obj = datetime.fromtimestamp(int(v), tz=timezone.utc)
+        date_obj = datetime.fromtimestamp(int(v) / 1000.0, tz=timezone.utc)
         v = date_obj.strftime("%Y-%m-%d")
     return k, v
 
@@ -51,7 +56,9 @@ def load_substances(data_folder: str):
             record = dict_convert(record, keyfn=process_key)
             if "codes" in record.keys():
                 record["xrefs"] = parse_xrefs(record["codes"])
-            dict_traverse(record, timestamp_to_date)  # parse dates in `date_cols` only
+
+            # parse dates in `date_cols` only
+            dict_traverse(record, timestamp_to_date, traverse_list=True)
             record = dict_sweep(record, vals=["", None], remove_invalid_list=True)
 
             _id = f"gsrs.uuid:{record['uuid']}"
